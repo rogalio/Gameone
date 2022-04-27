@@ -13,8 +13,9 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 //mydom
 const closed = document.querySelectorAll(".close");
-const first = document.getElementById(".first");
+const first = document.getElementById("first");
 const submitBtn = document.querySelector(".btn-submit");
+const mondalForm = document.getElementById("modal-form");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -30,7 +31,7 @@ const closeModal = () => {
 
 //fonction valdier le form
 const validForm = () => {
-  submitBtn.style.display = "none";
+  submitBtn.style.cursor = "not-allowed";
 };
 
 //close modal
@@ -39,7 +40,16 @@ closed.forEach((span) => span.addEventListener("click", closeModal));
 // fonction verifier form
 
 const validate = () => {
-  if (first.lenght < 2) {
-    validForm();
+  const errorBox = document.getElementById("first-error");
+  if (first.value.length < 2) {
+    errorBox.textContent = "prenom + 2 caract";
+  } else {
+    errorBox.style.display = "none";
   }
 };
+
+//valider le form
+mondalForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  validate();
+});
