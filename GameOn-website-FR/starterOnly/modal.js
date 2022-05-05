@@ -15,7 +15,9 @@ const formData = document.querySelectorAll(".formData");
 const closed = document.querySelectorAll(".close");
 const first = document.getElementById("first");
 const last = document.getElementById("last");
+const email = document.getElementById("email");
 const birth = document.getElementById("birthdate");
+const match = document.getElementById("quantity");
 const radio = document.querySelectorAll('input[name="location"]');
 const cgv = document.getElementById("checkbox1");
 const submitBtn = document.querySelector(".btn-submit");
@@ -56,9 +58,23 @@ const checkform = () => {
     error++;
     errorBoxLast.textContent =
       "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+    errorBoxLast.style.display = "block";
   } else {
     errorBoxLast.style.display = "none";
   }
+  //email check
+  const errorMail = document.getElementById("mail-error");
+
+  for (let i = 0; i < email.value.length; i++) {
+    if (email.value[i] === "@") {
+      errorMail.style.display = "none";
+    } else {
+      error++;
+      errorMail.textContent = "Veuillez rentrer un email valide";
+      errorMail.style.display = "block";
+    }
+  }
+
   //birth check
   const errorBirth = document.getElementById("birth-error");
   if (birth.value) {
@@ -66,9 +82,19 @@ const checkform = () => {
   } else {
     error++;
     errorBirth.textContent = "Vous devez entrer votre date de naissance.";
+    errorBirth.style.display = "block";
   }
-  // options check
+  // match check
+  const errorMatch = document.getElementById("match-error");
+  // if (typeof match.value === number) {
+  //   errorMatch.style.display = "none";
+  // } else {
+  //   error++;
+  //   errorMatch.textContent = "Veuillez renseigner un nombre";
+  // errorMatch.style.display = "block";
+  // }
 
+  // options check
   const errorOption = document.getElementById("option-error");
   let checked = false;
   for (let i = 0; i < radio.length; i++) {
@@ -81,6 +107,7 @@ const checkform = () => {
   } else {
     error++;
     errorOption.textContent = "Vous devez choisir une option.";
+    errorOption.style.display = "block";
   }
 
   // CGV check
@@ -91,6 +118,7 @@ const checkform = () => {
     error++;
     errorCgv.textContent =
       "Vous devez vérifier que vous acceptez les termes et conditions.";
+    errorCgv.style.display = "block";
   }
   return error === 0;
 };
