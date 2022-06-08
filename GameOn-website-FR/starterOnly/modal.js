@@ -22,20 +22,21 @@ const radio = document.querySelectorAll('input[name="location"]');
 const cgv = document.getElementById("checkbox1");
 const submitBtn = document.querySelector(".btn-submit");
 const mondalForm = document.getElementById("modal-form");
+
+// launch modal form
+function launchModal() {
+  modalbg.style.display = "block";
+}
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
-const launchModal = () => {
-  modalbg.style.display = "block";
-};
-
-//fonction cose modal
+//fonction close modal
 const closeModal = () => {
   modalbg.style.display = "none";
 };
 
-//close modal
+//close modal event
 closed.forEach((span) => span.addEventListener("click", closeModal));
 
 // fonction verifier form
