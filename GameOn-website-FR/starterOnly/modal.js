@@ -26,9 +26,9 @@ const mondalForm = document.getElementById("modal-form");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
-function launchModal() {
+const launchModal = () => {
   modalbg.style.display = "block";
-}
+};
 
 //fonction cose modal
 const closeModal = () => {
@@ -63,16 +63,15 @@ const checkform = () => {
     errorBoxLast.style.display = "none";
   }
   //email check
-  const errorMail = document.getElementById("mail-error");
-
-  for (let i = 0; i < email.value.length; i++) {
-    if (email.value[i] === "@") {
-      errorMail.style.display = "none";
-    } else {
-      error++;
-      errorMail.textContent = "Veuillez rentrer un email valide";
-      errorMail.style.display = "block";
-    }
+  const errorMail = document.getElementById("email-error");
+  const regex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (regex.test(email.value)) {
+    errorMail.style.display = "none";
+  } else {
+    error++;
+    errorMail.textContent = "Veuillez rentrer un email valide";
+    errorMail.style.display = "block";
   }
 
   //birth check
@@ -86,13 +85,13 @@ const checkform = () => {
   }
   // match check
   const errorMatch = document.getElementById("match-error");
-  // if (typeof match.value === number) {
-  //   errorMatch.style.display = "none";
-  // } else {
-  //   error++;
-  //   errorMatch.textContent = "Veuillez renseigner un nombre";
-  // errorMatch.style.display = "block";
-  // }
+  if (!isNaN(parseInt(match.value)) && match.value >= 0) {
+    errorMatch.style.display = "none";
+  } else {
+    error++;
+    errorMatch.textContent = "Veuillez renseigner un nombre";
+    errorMatch.style.display = "block";
+  }
 
   // options check
   const errorOption = document.getElementById("option-error");
@@ -124,7 +123,7 @@ const checkform = () => {
 };
 
 //valider le form
-mondalForm.addEventListener("submit", function (event) {
+mondalForm.addEventListener("submit", (event) => {
   event.preventDefault();
   if (checkform()) {
     alert("Merci ! Votre réservation a été reçue.");
