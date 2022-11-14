@@ -22,6 +22,7 @@ const radio = document.querySelectorAll('input[name="location"]');
 const cgv = document.getElementById("checkbox1");
 const submitBtn = document.querySelector(".btn-submit");
 const mondalForm = document.getElementById("modal-form");
+const modalBody = document.querySelector(".modal-body");
 
 // launch modal form
 function launchModal() {
@@ -127,7 +128,8 @@ const checkform = () => {
 mondalForm.addEventListener("submit", (event) => {
   event.preventDefault();
   if (checkform()) {
-    alert("Merci ! Votre réservation a été reçue.");
-    closeModal();
+    const successMessage = document.createElement("p");
+    successMessage.textContent = "Merci ! Votre réservation a été reçue.";
+    mondalForm.replaceWith(successMessage);
   }
 });
