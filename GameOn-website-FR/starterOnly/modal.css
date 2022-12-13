@@ -92,6 +92,9 @@ img {
     display: block;
     text-align: left;
   }
+  .hero-headline {
+    font-size: 2rem
+  }
 }
 
 @media screen and (max-width: 540px) {
@@ -103,6 +106,22 @@ img {
     display: block;
     margin-top: -15px;
   }
+  .hero-headline {
+    font-size: 2rem
+  }
+}
+
+
+.btn-close-end {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
 }
 
 main {
@@ -497,12 +516,12 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.5rem;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 1,5rem;
   }
   .hero-img img {
     border-radius: 10px;

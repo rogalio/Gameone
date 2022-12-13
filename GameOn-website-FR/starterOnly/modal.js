@@ -126,10 +126,18 @@ const checkform = () => {
 
 //valider le form
 mondalForm.addEventListener("submit", (event) => {
+  const modalContent = document.getElementById("content");
+  const modalbtnClose = document.getElementById("close-btn");
   event.preventDefault();
   if (checkform()) {
     const successMessage = document.createElement("p");
     successMessage.textContent = "Merci ! Votre réservation a été reçue.";
+    modalContent.style.height = "60%";
+    modalContent.appendChild(modalbtnClose);
+    modalbtnClose.style.marginTop = "100%";
+    modalbtnClose.value = "Fermer";
+    modalbtnClose.addEventListener("click", closeModal);
     mondalForm.replaceWith(successMessage);
+ 
   }
 });
